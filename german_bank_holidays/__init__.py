@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import datetime
+from __future__ import division
 
+import datetime
 
 STATE_CODES = {
     'Baden-Württemberg':'BW',
@@ -186,7 +187,7 @@ class EasterDay:
         K(X) = X div 100
         """
 
-        k = self.year / 100
+        k = self.year // 100
         return k
 
     def get_m(self):
@@ -197,7 +198,7 @@ class EasterDay:
         """
 
         k = self.get_k()
-        m = 15 + (3 * k + 3) / 4 - (8 * k + 13) / 25
+        m = 15 + (3 * k + 3) // 4 - (8 * k + 13) // 25
         return m
 
     def get_s(self):
@@ -208,7 +209,7 @@ class EasterDay:
         """
 
         k = self.get_k()
-        s = 2 - (3 * k + 3) / 4
+        s = 2 - (3 * k + 3) // 4
         return s
 
     def get_a(self):
@@ -242,7 +243,7 @@ class EasterDay:
 
         a = self.get_a()
         d = self.get_d()
-        r = d / 29 + (d / 28 - d / 29) * (a / 11)
+        r = d // 29 + (d // 28 - d // 29) * (a // 11)
         return r
 
     def get_og(self):
@@ -265,7 +266,7 @@ class EasterDay:
         """
 
         s = self.get_s()
-        sz = 7 - (self.year + self.year / 4 + s) % 7
+        sz = 7 - (self.year + self.year // 4 + s) % 7
         return sz
 
     def get_oe(self):
